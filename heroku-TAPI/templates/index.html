@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+
+
+<h1> Welcome to T-API<h1>
+    
+{% if session.get("username") %}
+<h1> Username : {{ session.get("username") }}</h1>
+<form action ="/logout" method="GET"> 
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" >Logout</button>
+    </div>
+</form>
+<h1> My Tweets </h1>
+{% for i in statuses %}
+    <div class="card">
+        <div class="card-body">
+            {{i.text}}        
+        </div>
+    </div>
+{% endfor %}
+
+{% else %}
+<form action ="/login" method="GET">
+        
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" >Login</button>
+    </div>
+    
+</form>
+<div>
+    <h2>Please Login to see Your Tweets.</h2>
+</div>
+
+{% endif %}
+
+{% endblock %}

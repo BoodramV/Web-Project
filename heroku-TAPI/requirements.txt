@@ -1,0 +1,4 @@
+Flask
+Flask-Session
+tweepy
+python-twitter

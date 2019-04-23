@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+
+<h1>Search Tweets<h1>
+<form action ="/search" method="POST">
+        <legend>Enter User name to search tweets : </legend>
+        <div class="form-group">
+            <input class="form-control" name="user" placeholder="User" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit" >Search</button>
+</form>
+<br>
+{% if request.method == "POST" %}
+    {% if not tweets %}
+
+    <h1> No tweets found for this user</h1>
+    {% else %}
+    {% for tweet in tweets %}
+    <div class="card">
+        <div class="card-body">
+            
+            {{tweet.text}}        
+        </div>
+    </div>
+        
+    {% endfor %}
+
+    {% endif %}
+
+{% endif %}
+
+
+
+{% endblock %}
